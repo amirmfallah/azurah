@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 import { artists } from "../../data/artists";
-import { releases } from "../../data/releases";
+import { getReleasesByArtistId, getArtistNames } from "../../utils/data";
 
 export function getStaticPaths() {
   return artists.map((artist) => ({
@@ -15,9 +15,7 @@ export function getStaticPaths() {
 const { artist } = Astro.props;
 
 // Get releases by this artist
-const artistReleases = releases.filter((release) =>
-  release.artist.toLowerCase().includes(artist.name.toLowerCase())
-);
+const artistReleases = getReleasesByArtistId(artist.id);
 ---
 
 <Layout>
@@ -83,7 +81,7 @@ const artistReleases = releases.filter((release) =>
                     <img src={release.image} alt={release.title} class="w-full h-full object-cover" />
                   </div>
                   <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">{release.title}</h3>
-                  <p class="text-xs opacity-50 mb-2 tracking-wide">{release.artist}</p>
+                  <p class="text-xs opacity-50 mb-2 tracking-wide">{getArtistNames(release.artistIds)}</p>
                   <p class="text-xs tracking-widest opacity-30">{release.catalogNumber}</p>
                 </a>
               ))}

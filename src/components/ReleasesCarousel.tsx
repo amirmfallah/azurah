@@ -1,6 +1,7 @@
 import { Carousel, CarouselContent, CarouselItem, type CarouselApi } from "@/components/ui/carousel";
 import { useState } from "react";
 import { releases } from "../data/releases";
+import { getArtistNames } from "../utils/data";
 
 export function ReleasesCarousel() {
   const [api, setApi] = useState<CarouselApi>();
@@ -31,7 +32,7 @@ export function ReleasesCarousel() {
                   <img src={release.image} alt={release.title} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-lg md:text-xl font-black mb-1 tracking-tight">{release.title}</h3>
-                <p className="text-xs opacity-50 mb-4 tracking-wide">{release.artist}</p>
+                <p className="text-xs opacity-50 mb-4 tracking-wide">{getArtistNames(release.artistIds)}</p>
                 <span className="text-xs tracking-widest group-hover:underline">
                   + View
                 </span>

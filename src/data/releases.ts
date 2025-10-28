@@ -1,7 +1,7 @@
 export interface Release {
   id: string;
   title: string;
-  artist: string;
+  artistIds: string[]; // Array of artist IDs for many-to-many relationship
   image: string;
   releaseDate: string;
   catalogNumber: string;
@@ -14,8 +14,8 @@ export interface Release {
 export const releases: Release[] = [
   {
     id: "unknown-artist-dizzy",
-    title: "Unknown Artist - Dizzy",
-    artist: "Various Artists",
+    title: "Dizzy",
+    artistIds: ["adam-beyer", "amelie-lens"],
     image: "/hero.png",
     releaseDate: "2025-01-15",
     catalogNumber: "AZRF001",
@@ -26,8 +26,8 @@ export const releases: Release[] = [
   },
   {
     id: "bart-skils-sakura",
-    title: "Bart Skils - Sakura",
-    artist: "Various Artists",
+    title: "Sakura",
+    artistIds: ["bart-skils"],
     image: "/hero.png",
     releaseDate: "2025-01-10",
     catalogNumber: "AZRF002",
@@ -39,7 +39,7 @@ export const releases: Release[] = [
   {
     id: "lift-me-up",
     title: "Lift Me Up",
-    artist: "Various Artists",
+    artistIds: ["enrico-sangiuliano", "alan-fitzpatrick"],
     image: "/hero.png",
     releaseDate: "2025-01-05",
     catalogNumber: "AZRF003",
@@ -51,7 +51,7 @@ export const releases: Release[] = [
   {
     id: "build-to-destroy",
     title: "Build to Destroy",
-    artist: "Metod Hristov",
+    artistIds: ["metod-hristov"],
     image: "/hero.png",
     releaseDate: "2024-12-20",
     catalogNumber: "AZRF004",
@@ -63,7 +63,7 @@ export const releases: Release[] = [
   {
     id: "always",
     title: "Always",
-    artist: "Various Artists",
+    artistIds: ["adam-beyer"],
     image: "/hero.png",
     releaseDate: "2024-12-15",
     catalogNumber: "AZRF005",
@@ -73,14 +73,14 @@ export const releases: Release[] = [
     soundcloudUrl: "#",
   },
   {
-    id: "unknown-artist-dizzy-2",
-    title: "Unknown Artist - Dizzy",
-    artist: "Various Artists",
+    id: "midnight-hour",
+    title: "Midnight Hour",
+    artistIds: ["amelie-lens", "bart-skils"],
     image: "/hero.png",
     releaseDate: "2024-12-10",
     catalogNumber: "AZRF006",
-    description: "Another deep dive into the unknown",
-    tracks: ["Dizzy (Alternative Mix)", "Dizzy (Reprise)"],
+    description: "Dark, driving collaboration between two techno powerhouses",
+    tracks: ["Midnight Hour (Original Mix)", "Midnight Hour (Extended)"],
     spotifyUrl: "#",
     soundcloudUrl: "#",
   },

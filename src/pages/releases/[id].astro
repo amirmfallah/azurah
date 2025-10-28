@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Navigation from "../../components/Navigation.astro";
 import Footer from "../../components/Footer.astro";
 import { releases } from "../../data/releases";
+import { getArtistsByIds } from "../../utils/data";
 
 export function getStaticPaths() {
   return releases.map((release) => ({
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 }
 
 const { release } = Astro.props;
+const releaseArtists = getArtistsByIds(release.artistIds);
 ---
 
 <Layout>
@@ -31,7 +33,14 @@ const { release } = Astro.props;
           <div class="flex flex-col justify-center">
             <div class="text-xs tracking-widest opacity-50 mb-4">{release.catalogNumber}</div>
             <h1 class="hero-text mb-6 md:mb-8">{release.title}</h1>
-            <div class="text-xl md:text-2xl font-black mb-8 md:mb-12 tracking-tight">{release.artist}</div>
+            <div class="text-xl md:text-2xl font-black mb-8 md:mb-12 tracking-tight">
+              {releaseArtists.map((artist, index) => (
+                <>
+                  <a href={`/artists/${artist.id}`} class="hover:underline">{artist.name}</a>
+                  {index < releaseArtists.length - 1 && <span>, </span>}
+                </>
+              ))}
+            </div>
 
             <div class="border-t border-white opacity-20 mb-8"></div>
 
