@@ -1,5 +1,6 @@
 import { artists } from "../data/artists";
 import { releases, type Release } from "../data/releases";
+import { events, type Event } from "../data/events";
 import type { Artist } from "../data/artists";
 
 export function getArtistsByIds(artistIds: string[]): Artist[] {
@@ -16,4 +17,18 @@ export function getArtistNames(artistIds: string[]): string {
 
 export function getReleasesByArtistId(artistId: string): Release[] {
   return releases.filter((release) => release.artistIds.includes(artistId));
+}
+
+export function getUpcomingEvents(): Event[] {
+  const now = new Date();
+  return events
+    .filter((event) => new Date(event.date) >= now)
+    .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+}
+
+export function getPastEvents(): Event[] {
+  const now = new Date();
+  return events
+    .filter((event) => new Date(event.date) < now)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
