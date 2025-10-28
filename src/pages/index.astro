@@ -1,132 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { ReleasesCarousel } from "../components/ReleasesCarousel";
+import Navigation from "../components/Navigation.astro";
+import HeroSection from "../components/HeroSection.astro";
+import HeroImage from "../components/HeroImage.astro";
+import ReleasesSection from "../components/ReleasesSection.astro";
+import ArtistsSection from "../components/ArtistsSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
   <main class="min-h-screen uppercase bg-black text-white">
-    <!-- Navigation -->
-    <nav
-      class="fixed top-0 left-0 right-0 z-50 px-4 md:px-8 py-4 md:py-6 flex justify-between items-center mix-blend-difference"
-    >
-      <div class="text-xs md:text-sm tracking-widest">Azurah Frequency</div>
-      <div class="flex gap-3 md:gap-8 text-xs md:text-sm tracking-wider">
-        <a href="#releases" class="hover:underline">Releases</a>
-        <a href="#artists" class="hover:underline">Artists</a>
-        <a href="#contact" class="hover:underline">Contact</a>
-      </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="flex items-center justify-center px-4 md:px-8 pt-32 md:pt-40 pb-8 md:pb-12">
-      <div class="w-full max-w-[2000px]">
-        <!-- Main Statement -->
-        <h1 class="hero-text mb-12 md:mb-16">
-          Sound from
-          <br />
-          the past
-          <br />
-          for
-          <br />
-          the future
-        </h1>
-
-        <!-- Divider & Info -->
-        <div class="border-t border-white opacity-20 mb-6 md:mb-8"></div>
-        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 md:gap-0">
-          <p class="text-xs md:text-sm tracking-widest">Azurah Frequency</p>
-          <p class="text-xs md:text-sm tracking-widest">Est. 2025</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Full Width Image -->
-    <section class="w-full px-4 md:px-8">
-      <div class="w-full aspect-video h-[500px] lg:h-[600px]">
-        <img src="/hero.png" alt="Azurah Frequency" class="w-full h-full object-cover" />
-      </div>
-    </section>
-
-    <!-- Releases Carousel Section -->
-    <section id="releases" class="py-16 md:py-32 px-4 md:px-8">
-      <div class="w-full max-w-[2000px] mx-auto">
-        <h2 class="section-title">Releases</h2>
-        <ReleasesCarousel client:load />
-      </div>
-    </section>
-
-    <!-- Artists Section -->
-    <section id="artists" class="flex items-center justify-center px-4 md:px-8 py-16 md:py-32">
-      <div class="w-full max-w-[2000px]">
-        <h2 class="section-title mb-12 md:mb-20">
-          Our
-          <br />
-          Artists
-        </h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          {
-            [1, 2, 3, 4, 5, 6].map((i) => (
-              <div class="group cursor-pointer">
-                <div class="aspect-square bg-black border border-white mb-4 opacity-50 group-hover:opacity-100 transition-opacity" />
-                <div class="text-xl md:text-2xl font-black tracking-tight">Artist {i}</div>
-                <div class="text-xs md:text-sm tracking-wide mt-1 opacity-50">Techno / House</div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="flex items-center justify-center px-4 md:px-8 py-16 md:py-32">
-      <div class="w-full max-w-[2000px]">
-        <h2 class="section-title mb-12 md:mb-20">
-          Get in
-          <br />
-          Touch
-        </h2>
-        <div>
-          <a
-            href="mailto:info@azurah.com"
-            class="text-2xl md:text-7xl font-black hover:underline tracking-tight block mb-8 break-all"
-          >
-            info@azurah.com
-          </a>
-          <div class="flex flex-wrap gap-6 md:gap-12 text-xs md:text-sm tracking-widest mt-8 md:mt-16">
-            <a href="#" class="hover:underline">Instagram</a>
-            <a href="#" class="hover:underline">Soundcloud</a>
-            <a href="#" class="hover:underline">Spotify</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="px-4 md:px-8 py-8 md:py-12 border-t border-white opacity-30">
-      <div
-        class="flex flex-col md:flex-row md:justify-between md:items-center gap-2 md:gap-0 text-xs md:text-sm max-w-[2000px] mx-auto"
-      >
-        <div>© 2025 Azurah Frequency</div>
-        <div class="tracking-widest">All rights reserved</div>
-      </div>
-    </footer>
+    <Navigation />
+    <HeroSection />
+    <HeroImage />
+    <ReleasesSection />
+    <ArtistsSection />
+    <ContactSection />
+    <Footer />
   </main>
 </Layout>
-
-<style>
-  .hero-text {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(2.5rem, 8vw, 6rem);
-    font-weight: 900;
-    line-height: 0.9;
-    letter-spacing: -0.05em;
-  }
-
-  .section-title {
-    font-family: "Inter", sans-serif;
-    font-size: clamp(2rem, 6vw, 5rem);
-    font-weight: 900;
-    line-height: 0.85;
-    letter-spacing: -0.05em;
-  }
-</style>

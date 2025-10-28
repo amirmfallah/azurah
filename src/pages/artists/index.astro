@@ -1,0 +1,35 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { artists } from "../../data/artists";
+---
+
+<Layout>
+  <main class="min-h-screen uppercase bg-black text-white">
+    <Navigation />
+
+    <!-- Artists -->
+    <section class="flex items-center justify-center px-4 md:px-8 pt-32 md:pt-40 pb-16 md:pb-32">
+      <div class="w-full max-w-[2000px]">
+        <h1 class="hero-text mb-12 md:mb-20">Our Artists</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          {
+            artists.map((artist) => (
+              <a href={`/artists/${artist.id}`} class="group">
+                <div class="aspect-square bg-black mb-4 overflow-hidden">
+                  <img src={artist.image} alt={artist.name} class="w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity" />
+                </div>
+                <div class="text-xl md:text-2xl font-black tracking-tight">{artist.name}</div>
+                <div class="text-xs md:text-sm tracking-wide mt-1 opacity-50">{artist.genres.join(' / ')}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>

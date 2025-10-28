@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { releases } from "../../data/releases";
+---
+
+<Layout>
+  <main class="min-h-screen uppercase bg-black text-white">
+    <Navigation />
+
+    <!-- Releases -->
+    <section class="flex items-center justify-center px-4 md:px-8 pt-32 md:pt-40 pb-16 md:pb-32">
+      <div class="w-full max-w-[2000px]">
+        <h1 class="hero-text mb-12 md:mb-20">All Releases</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+          {
+            releases.map((release) => (
+              <a href={`/releases/${release.id}`} class="group">
+                <div class="aspect-square bg-black mb-4 overflow-hidden">
+                  <img src={release.image} alt={release.title} class="w-full h-full object-cover" />
+                </div>
+                <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">{release.title}</h3>
+                <p class="text-xs opacity-50 mb-2 tracking-wide">{release.artist}</p>
+                <p class="text-xs tracking-widest opacity-30">{release.catalogNumber}</p>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>

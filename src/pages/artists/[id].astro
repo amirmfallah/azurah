@@ -1,0 +1,98 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Navigation from "../../components/Navigation.astro";
+import Footer from "../../components/Footer.astro";
+import { artists } from "../../data/artists";
+import { releases } from "../../data/releases";
+
+export function getStaticPaths() {
+  return artists.map((artist) => ({
+    params: { id: artist.id },
+    props: { artist },
+  }));
+}
+
+const { artist } = Astro.props;
+
+// Get releases by this artist
+const artistReleases = releases.filter((release) =>
+  release.artist.toLowerCase().includes(artist.name.toLowerCase())
+);
+---
+
+<Layout>
+  <main class="min-h-screen uppercase bg-black text-white">
+    <Navigation />
+
+    <!-- Artist Detail -->
+    <section class="flex items-center justify-center px-4 md:px-8 pt-32 md:pt-40 pb-16 md:pb-32">
+      <div class="w-full max-w-[2000px]">
+        <!-- Header -->
+        <div class="mb-12 md:mb-20">
+          <h1 class="hero-text mb-4 md:mb-6">{artist.name}</h1>
+          <div class="text-xl md:text-2xl font-black tracking-tight opacity-70">
+            {artist.genres.join(' / ')}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+          <!-- Image -->
+          <div class="md:col-span-1">
+            <div class="aspect-square bg-black overflow-hidden mb-6">
+              <img src={artist.image} alt={artist.name} class="w-full h-full object-cover" />
+            </div>
+
+            {artist.country && (
+              <div class="mb-6">
+                <div class="text-xs tracking-widest opacity-50 mb-2">Based In</div>
+                <div class="text-sm tracking-wide">{artist.country}</div>
+              </div>
+            )}
+
+            <div class="flex flex-col gap-3 text-xs tracking-widest">
+              {artist.spotifyUrl && (
+                <a href={artist.spotifyUrl} class="hover:underline">Spotify</a>
+              )}
+              {artist.soundcloudUrl && (
+                <a href={artist.soundcloudUrl} class="hover:underline">Soundcloud</a>
+              )}
+              {artist.instagramUrl && (
+                <a href={artist.instagramUrl} class="hover:underline">Instagram</a>
+              )}
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="md:col-span-2">
+            {artist.bio && (
+              <div class="prose prose-invert max-w-none">
+                <div class="text-base md:text-lg leading-relaxed normal-case tracking-normal" set:html={artist.bio} />
+              </div>
+            )}
+          </div>
+        </div>
+
+        <!-- Artist Releases -->
+        {artistReleases.length > 0 && (
+          <div class="mt-20 md:mt-32">
+            <h2 class="section-title mb-12 md:mb-16">Releases</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+              {artistReleases.map((release) => (
+                <a href={`/releases/${release.id}`} class="group">
+                  <div class="aspect-square bg-black mb-4 overflow-hidden">
+                    <img src={release.image} alt={release.title} class="w-full h-full object-cover" />
+                  </div>
+                  <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">{release.title}</h3>
+                  <p class="text-xs opacity-50 mb-2 tracking-wide">{release.artist}</p>
+                  <p class="text-xs tracking-widest opacity-30">{release.catalogNumber}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <Footer />
+  </main>
+</Layout>
