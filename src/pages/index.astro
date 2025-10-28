@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { ReleasesCarousel } from "../components/ReleasesCarousel";
 ---
 
 <Layout>
@@ -25,7 +26,9 @@ import Layout from "../layouts/Layout.astro";
           <br />
           the past
           <br />
-          for the future
+          for
+          <br />
+          the future
         </h1>
 
         <!-- Divider & Info -->
@@ -45,82 +48,10 @@ import Layout from "../layouts/Layout.astro";
     </section>
 
     <!-- Releases Carousel Section -->
-    <section id="releases" class="relative py-16 md:py-32">
-      <div class="flex items-center gap-8 md:gap-12">
-        <!-- Vertical "RELEASES" Text -->
-        <div class="hidden md:block pl-4 md:pl-8">
-          <h2 class="vertical-text text-6xl md:text-8xl font-black tracking-tight opacity-20">Releases</h2>
-        </div>
-
-        <!-- Carousel Container -->
-        <div class="flex-1 overflow-hidden">
-          <!-- View All -->
-          <div class="px-4 md:px-0 mb-8">
-            <a href="#" class="text-xs tracking-widest hover:underline opacity-60">View All</a>
-          </div>
-
-          <!-- Carousel Scroll -->
-          <div
-            class="carousel-scroll flex gap-6 overflow-x-auto pb-8 px-4 md:px-0 pr-4 md:pr-8"
-            style="scroll-behavior: smooth;"
-          >
-            <!-- Release Card 1 -->
-            <div class="carousel-card shrink-0 w-72 md:w-80">
-              <div class="aspect-square bg-black border border-white mb-4 overflow-hidden">
-                <img src="/release-1.jpg" alt="Release 1" class="w-full h-full object-cover" />
-              </div>
-              <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">Unknown Artist - Dizzy</h3>
-              <p class="text-xs opacity-50 mb-4 tracking-wide">Various Artists</p>
-              <a href="#" class="text-xs tracking-widest hover:underline">+ View</a>
-            </div>
-
-            <!-- Release Card 2 -->
-            <div class="carousel-card shrink-0 w-72 md:w-80">
-              <div class="aspect-square bg-black border border-white mb-4 overflow-hidden">
-                <img src="/release-2.jpg" alt="Release 2" class="w-full h-full object-cover" />
-              </div>
-              <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">Bart Skils - Sakura</h3>
-              <p class="text-xs opacity-50 mb-4 tracking-wide">Various Artists</p>
-              <a href="#" class="text-xs tracking-widest hover:underline">+ View</a>
-            </div>
-
-            <!-- Release Card 3 -->
-            <div class="carousel-card shrink-0 w-72 md:w-80">
-              <div class="aspect-square bg-black border border-white mb-4 overflow-hidden">
-                <img src="/release-3.jpg" alt="Release 3" class="w-full h-full object-cover" />
-              </div>
-              <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">Lift Me Up</h3>
-              <p class="text-xs opacity-50 mb-4 tracking-wide">Various Artists</p>
-              <a href="#" class="text-xs tracking-widest hover:underline">+ View</a>
-            </div>
-
-            <!-- Release Card 4 -->
-            <div class="carousel-card shrink-0 w-72 md:w-80">
-              <div class="aspect-square bg-black border border-white mb-4 overflow-hidden">
-                <img src="/release-4.jpg" alt="Release 4" class="w-full h-full object-cover" />
-              </div>
-              <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">Build to Destroy</h3>
-              <p class="text-xs opacity-50 mb-4 tracking-wide">Metod Hristov</p>
-              <a href="#" class="text-xs tracking-widest hover:underline">+ View</a>
-            </div>
-
-            <!-- Release Card 5 -->
-            <div class="carousel-card shrink-0 w-72 md:w-80">
-              <div class="aspect-square bg-black border border-white mb-4 overflow-hidden">
-                <img src="/release-5.jpg" alt="Release 5" class="w-full h-full object-cover" />
-              </div>
-              <h3 class="text-lg md:text-xl font-black mb-1 tracking-tight">Always</h3>
-              <p class="text-xs opacity-50 mb-4 tracking-wide">Various Artists</p>
-              <a href="#" class="text-xs tracking-widest hover:underline">+ View</a>
-            </div>
-          </div>
-
-          <!-- Navigation -->
-          <div class="flex justify-between items-center px-4 md:px-0 pr-4 md:pr-8 mt-4">
-            <button class="carousel-prev text-xs tracking-widest hover:underline opacity-60">Previous</button>
-            <button class="carousel-next text-xs tracking-widest hover:underline opacity-60">Next</button>
-          </div>
-        </div>
+    <section id="releases" class="py-16 md:py-32 px-4 md:px-8">
+      <div class="w-full max-w-[2000px] mx-auto">
+        <h2 class="section-title">Releases</h2>
+        <ReleasesCarousel client:load />
       </div>
     </section>
 
@@ -185,7 +116,7 @@ import Layout from "../layouts/Layout.astro";
 <style>
   .hero-text {
     font-family: "Inter", sans-serif;
-    font-size: clamp(3.5rem, 11vw, 9rem);
+    font-size: clamp(2.5rem, 8vw, 6rem);
     font-weight: 900;
     line-height: 0.9;
     letter-spacing: -0.05em;
@@ -193,42 +124,9 @@ import Layout from "../layouts/Layout.astro";
 
   .section-title {
     font-family: "Inter", sans-serif;
-    font-size: clamp(3rem, 10vw, 8rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     font-weight: 900;
     line-height: 0.85;
     letter-spacing: -0.05em;
   }
-
-  .vertical-text {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-
-  .carousel-scroll {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .carousel-scroll::-webkit-scrollbar {
-    display: none;
-  }
 </style>
-
-<script>
-  // Carousel navigation
-  const carouselScroll = document.querySelector(".carousel-scroll");
-  const prevBtn = document.querySelector(".carousel-prev");
-  const nextBtn = document.querySelector(".carousel-next");
-
-  if (carouselScroll && prevBtn && nextBtn) {
-    const scrollAmount = 320; // Card width + gap
-
-    prevBtn.addEventListener("click", () => {
-      carouselScroll.scrollBy({ left: -scrollAmount, behavior: "smooth" });
-    });
-
-    nextBtn.addEventListener("click", () => {
-      carouselScroll.scrollBy({ left: scrollAmount, behavior: "smooth" });
-    });
-  }
-</script>
