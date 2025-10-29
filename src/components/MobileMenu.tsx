@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { Menu, X } from "lucide-react";
 import { siteConfig } from "../data/config";
 
 export function MobileMenu() {
@@ -15,10 +16,11 @@ export function MobileMenu() {
       {/* Hamburger Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden text-xs tracking-widest hover:underline"
+        className="md:hidden flex items-center gap-2 text-xs tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
         aria-label="Open menu"
       >
-        Menu
+        <span>MENU</span>
+        <Menu size={16} strokeWidth={1.5} />
       </button>
 
       {/* Full Page Overlay - Portal to body to escape mix-blend-difference */}
@@ -29,16 +31,14 @@ export function MobileMenu() {
             {/* Top decorative elements and close */}
             <div className="flex justify-between items-start p-4 md:p-6" onClick={(e) => e.stopPropagation()}>
               <span className="text-xl opacity-50">+</span>
-              <div className="flex items-center gap-8">
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-xs tracking-widest hover:underline"
-                  aria-label="Close menu"
-                >
-                  CLOSE
-                </button>
-                <span className="text-xl opacity-50">—</span>
-              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-2 text-xs tracking-widest hover:opacity-70 transition-opacity cursor-pointer"
+                aria-label="Close menu"
+              >
+                <span>CLOSE</span>
+                <X size={16} strokeWidth={1.5} />
+              </button>
             </div>
 
             {/* Menu Items */}
