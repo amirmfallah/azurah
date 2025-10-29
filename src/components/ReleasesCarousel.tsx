@@ -9,8 +9,11 @@ export function ReleasesCarousel() {
   return (
     <div className="w-full">
       {/* View All */}
-      <div className="px-4 md:px-0 mb-8">
-        <a href="/releases" className="text-xs tracking-widest hover:underline opacity-60">
+      <div className="mb-6 md:mb-8">
+        <a
+          href="/releases"
+          className="text-xs tracking-widest hover:underline opacity-60 hover:opacity-100 transition-opacity"
+        >
           View All
         </a>
       </div>
@@ -33,9 +36,7 @@ export function ReleasesCarousel() {
                 </div>
                 <h3 className="text-lg md:text-xl font-black mb-1 tracking-tight">{release.title}</h3>
                 <p className="text-xs opacity-50 mb-4 tracking-wide">{getArtistNames(release.artistIds)}</p>
-                <span className="text-xs tracking-widest group-hover:underline">
-                  + View
-                </span>
+                <span className="text-xs tracking-widest group-hover:underline">+ View</span>
               </a>
             </CarouselItem>
           ))}
