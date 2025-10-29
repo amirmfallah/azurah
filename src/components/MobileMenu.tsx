@@ -11,6 +11,23 @@ export function MobileMenu() {
     setMounted(true);
   }, []);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [isOpen]);
+
   return (
     <>
       {/* Hamburger Button */}
@@ -27,7 +44,7 @@ export function MobileMenu() {
       {mounted &&
         isOpen &&
         createPortal(
-          <div className="fixed inset-0 z-100 bg-black text-white flex flex-col" onClick={() => setIsOpen(false)}>
+          <div className="fixed inset-0 z-100 bg-black text-white flex flex-col min-h-screen" onClick={() => setIsOpen(false)}>
             {/* Top decorative elements and close */}
             <div className="flex justify-between items-start p-4 md:p-6" onClick={(e) => e.stopPropagation()}>
               <span className="text-xl opacity-50">+</span>
