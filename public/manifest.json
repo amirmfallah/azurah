@@ -1,0 +1,17 @@
+{
+  "name": "Azurah Frequency",
+  "short_name": "Azurah",
+  "description": "Echoes from the past for the future",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}
