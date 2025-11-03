@@ -5,11 +5,13 @@ export interface SocialLink {
 
 export interface SiteConfig {
   siteName: string;
+  isLive: boolean;
   socialLinks: SocialLink[];
 }
 
 export const siteConfig: SiteConfig = {
   siteName: "Azurah Frequency",
+  isLive: import.meta.env.PUBLIC_IS_LIVE === "true",
   socialLinks: [
     {
       name: "Instagram",
@@ -17,15 +19,19 @@ export const siteConfig: SiteConfig = {
     },
     {
       name: "Soundcloud",
-      url: "https://soundcloud.com/azurahfrequency",
+      url: "",
     },
     {
       name: "Youtube",
-      url: "https://youtube.com/@azurahfrequency",
+      url: "",
     },
     {
       name: "Spotify",
-      url: "https://open.spotify.com/user/azurahfrequency",
+      url: "",
+    },
+    {
+      name: "Beatport",
+      url: "",
     },
   ],
 };

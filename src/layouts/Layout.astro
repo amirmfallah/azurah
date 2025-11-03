@@ -9,12 +9,41 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO Meta Tags -->
+    <title>AZURAH FREQUENCY - Echoes from the past for the future</title>
+    <meta
+      name="description"
+      content="Azurah Frequency is a music label dedicated to bringing you echoes from the past for the future. Discover our releases, artists, and events."
+    />
+    <meta name="keywords" content="Azurah Frequency, music label, electronic music, releases, artists, events" />
+    <meta name="author" content="Azurah Frequency" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.toString()} />
+    <meta property="og:title" content="AZURAH FREQUENCY - Echoes from the past for the future" />
+    <meta
+      property="og:description"
+      content="Azurah Frequency is a music label dedicated to bringing you echoes from the past for the future. Discover our releases, artists, and events."
+    />
+    <meta property="og:image" content={new URL("/opengraph.png", Astro.url).toString()} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={Astro.url.toString()} />
+    <meta property="twitter:title" content="AZURAH FREQUENCY - Echoes from the past for the future" />
+    <meta
+      property="twitter:description"
+      content="Azurah Frequency is a music label dedicated to bringing you echoes from the past for the future. Discover our releases, artists, and events."
+    />
+    <meta property="twitter:image" content={new URL("/opengraph.png", Astro.url).toString()} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet" />
-    <title>AZURAH FREQUENCY</title>
   </head>
   <body>
     <slot />

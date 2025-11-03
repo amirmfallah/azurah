@@ -96,17 +96,23 @@ export function MobileMenu() {
               className="grid grid-cols-2 gap-4 p-8 md:p-16 text-xs md:text-sm tracking-widest"
               onClick={(e) => e.stopPropagation()}
             >
-              {siteConfig.socialLinks.map((social) => (
-                <a
-                  key={social.name}
-                  href={social.url}
-                  className="hover:underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  + {social.name.toUpperCase()}
-                </a>
-              ))}
+              {siteConfig.socialLinks.map((social) =>
+                social.url ? (
+                  <a
+                    key={social.name}
+                    href={social.url}
+                    className="hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    + {social.name.toUpperCase()}
+                  </a>
+                ) : (
+                  <span key={social.name} className="opacity-30 cursor-not-allowed">
+                    + {social.name.toUpperCase()}
+                  </span>
+                )
+              )}
             </div>
           </div>,
           document.body

@@ -9,18 +9,26 @@ import EventsSection from "../components/EventsSection.astro";
 import ContactSection from "../components/ContactSection.astro";
 import NewsletterSection from "../components/NewsletterSection.astro";
 import Footer from "../components/Footer.astro";
+import ComingSoon from "../components/ComingSoon.astro";
+import { siteConfig } from "../data/config";
 ---
 
 <Layout>
   <main class="min-h-screen uppercase bg-black text-white">
-    <Navigation />
-    <HeroSection />
-    <HeroImage />
-    <ReleasesSection />
-    <ArtistsSection />
-    <EventsSection />
-    <ContactSection />
-    <NewsletterSection />
-    <Footer />
+    {siteConfig.isLive ? (
+      <>
+        <Navigation />
+        <HeroSection />
+        <HeroImage />
+        <ReleasesSection />
+        <ArtistsSection />
+        <EventsSection />
+        <ContactSection />
+        <NewsletterSection />
+        <Footer />
+      </>
+    ) : (
+      <ComingSoon />
+    )}
   </main>
 </Layout>

@@ -23,9 +23,22 @@ const currentYear = new Date().getFullYear();
 
       <!-- Social Links -->
       <div class="col-span-2 md:col-span-1 flex flex-col gap-3 md:gap-4 text-xs md:text-sm tracking-widest">
-        {siteConfig.socialLinks.map((social) => (
-          <a href={social.url} class="hover:underline" target="_blank" rel="noopener noreferrer">+ {social.name}</a>
-        ))}
+        {
+          siteConfig.socialLinks.map((social) =>
+            social.url ? (
+              <a
+                href={social.url}
+                class="hover:underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                + {social.name}
+              </a>
+            ) : (
+              <span class="opacity-30 cursor-not-allowed">+ {social.name}</span>
+            )
+          )
+        }
       </div>
     </div>
 
