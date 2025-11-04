@@ -59,6 +59,17 @@ import "../styles/global.css";
     background-color: #000000;
   }
 
+  /* Hide scrollbar for all browsers */
+  html {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
   .hero-text {
     font-family: "Inter", sans-serif;
     font-size: clamp(2.5rem, 8vw, 6rem);
