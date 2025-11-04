@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { siteConfig } from "../data/config";
+---
+
+<Layout>
+  <main class="min-h-screen uppercase bg-black text-white">
+    <div class="min-h-screen flex items-center justify-center px-8 py-12">
+      <div class="w-full max-w-4xl">
+        <!-- Logo -->
+        <div class="flex justify-center mb-12 md:mb-16">
+          <img src="/logo.png" alt="Azurah Frequency" class="w-auto h-24 md:h-32 object-contain" />
+        </div>
+
+        <!-- Thank You Message -->
+        <div class="text-center mb-12 md:mb-16">
+          <h1 class="hero-text mb-6 md:mb-8">Thank You</h1>
+          <p class="text-lg md:text-xl tracking-wide max-w-xl mx-auto mb-8">
+            You've successfully subscribed to {siteConfig.siteName}. We'll notify you when we launch.
+          </p>
+          <a
+            href="/"
+            class="inline-block border border-white py-4 px-8 text-xs tracking-widest hover:bg-white hover:text-black transition-colors duration-300 uppercase hover:cursor-pointer"
+          >
+            Back to Home
+          </a>
+        </div>
+
+        <!-- Social Links -->
+        <div class="mt-16 md:mt-20 text-center">
+          <p class="text-xs tracking-widest opacity-50 mb-6">Follow Us</p>
+          <div class="flex justify-center gap-6 md:gap-8">
+            {
+              siteConfig.socialLinks.map((link) =>
+                link.url ? (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-xs tracking-widest hover:underline opacity-60 hover:opacity-100 transition-opacity"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <span class="text-xs tracking-widest opacity-30 cursor-not-allowed">{link.name}</span>
+                )
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -19,43 +19,94 @@ import { siteConfig } from "../data/config";
 
     <!-- Newsletter Form -->
     <div class="max-w-2xl mx-auto">
-      <form class="space-y-6">
-        <!-- Email -->
-        <div>
-          <label for="email" class="text-xs tracking-widest opacity-70 block mb-3">Email Address *</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="w-full bg-transparent border-b border-white border-opacity-50 focus:border-opacity-100 outline-none py-2 text-base md:text-lg transition-all"
-            placeholder=""
-          />
-        </div>
+      <div id="mlb2-8707708" class="ml-form-embedContainer ml-subscribe-form ml-subscribe-form-8707708">
+        <div class="ml-form-embedWrapper">
+          <div class="ml-form-embedBody">
+            <form
+              class="space-y-6 ml-block-form"
+              action="https://assets.mailerlite.com/jsonp/655306/forms/102626381857293315/subscribe"
+              data-code=""
+              method="post"
+              target="_blank"
+            >
+              <!-- Email -->
+              <div class="ml-field-group ml-validate-email ml-validate-required">
+                <label for="fields[email]" class="text-xs tracking-widest opacity-70 block mb-3">Email Address *</label>
+                <input
+                  type="email"
+                  id="fields[email]"
+                  name="fields[email]"
+                  required
+                  aria-required="true"
+                  aria-label="email"
+                  autocomplete="email"
+                  class="w-full bg-transparent border-b border-white border-opacity-50 focus:border-opacity-100 outline-none py-2 text-base md:text-lg transition-all"
+                  placeholder=""
+                />
+              </div>
 
-        <!-- Name -->
-        <div>
-          <label for="name" class="text-xs tracking-widest opacity-70 block mb-3">First Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="w-full bg-transparent border-b border-white border-opacity-50 focus:border-opacity-100 outline-none py-2 text-base md:text-lg transition-all"
-            placeholder=""
-          />
-        </div>
+              <!-- Name -->
+              <div class="ml-field-group">
+                <label for="fields[name]" class="text-xs tracking-widest opacity-70 block mb-3">First Name</label>
+                <input
+                  type="text"
+                  id="fields[name]"
+                  name="fields[name]"
+                  aria-label="name"
+                  autocomplete="given-name"
+                  class="w-full bg-transparent border-b border-white border-opacity-50 focus:border-opacity-100 outline-none py-2 text-base md:text-lg transition-all"
+                  placeholder=""
+                />
+              </div>
 
-        <!-- Submit Button -->
-        <div class="pt-4">
-          <button
-            type="submit"
-            class="w-full border border-white py-4 px-8 text-xs tracking-widest hover:bg-white hover:text-black transition-colors duration-300 uppercase hover:cursor-pointer"
-          >
-            Notify Me
-          </button>
+              <!-- Hidden fields -->
+              <input type="hidden" name="ml-submit" value="1" />
+              <input type="hidden" name="anticsrf" value="true" />
+
+              <!-- Submit Button -->
+              <div class="pt-4 ml-form-embedSubmit">
+                <button
+                  type="submit"
+                  class="primary w-full border border-white py-4 px-8 text-xs tracking-widest hover:bg-white hover:text-black transition-colors duration-300 uppercase hover:cursor-pointer"
+                >
+                  Notify Me
+                </button>
+                <button disabled style="display: none;" type="button" class="loading">
+                  <div class="ml-form-embedSubmitLoad"></div>
+                  <span class="sr-only">Loading...</span>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Success Message -->
+          <div class="ml-form-successBody row-success" style="display: none;">
+            <div class="ml-form-successContent">
+              <h4 class="hero-text mb-4">Thank you!</h4>
+              <p class="text-lg">You have successfully joined our subscriber list.</p>
+            </div>
+          </div>
         </div>
-      </form>
+      </div>
     </div>
+
+    <!-- MailerLite Scripts -->
+    <script is:inline>
+      function ml_webform_success_8707708() {
+        try {
+          window.top.location.href = "/thank-you";
+        } catch (e) {
+          window.location.href = "/thank-you";
+        }
+      }
+    </script>
+    <script
+      src="https://groot.mailerlite.com/js/w/webforms.min.js?v176e10baa5e7ed80d35ae235be3d5024"
+      is:inline
+      type="application/javascript"></script>
+    <script is:inline>
+      fetch("https://assets.mailerlite.com/jsonp/655306/forms/102626381857293315/takel");
+    </script>
 
     <!-- Social Links (Optional) -->
     <div class="mt-16 md:mt-20 text-center">
